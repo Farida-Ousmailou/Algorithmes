@@ -2,43 +2,73 @@
 
 function find_digit_one (number) {
     if (number > 0){
+
         number_str = number.toString()
-        console.log(number)
 
         for(let i = 0; i < number_str.length; i++){
             if(parseInt(number_str[i])==1){
-                console.log((parseInt(number_str[i])))
                 return parseInt(number_str[i])
 
-            } else {
-                console.log("Ce nombre ne contient pas de chiffre de 1")    
-            }
+            } 
         }
-    } else {
-        console.log(number,"est négatif")
-    }
+    } 
     
 }
 
-// find_digit_one(231456)
 
 
-function get_vision (index, current_digit, number){
-    number_str = number.toString()
+function get_vision (index, current_digit, number_str){
+
     const start_index = (index - current_digit) > 0 ? index - current_digit : 0
-    const end_index = (index + current_digit) > 0 ? index + current_digit : 0
+    const end_index = (index + current_digit) < number_str.length ? index + current_digit : (number_str.length-1)
 
     let vision = 0
     for(let i = start_index; i <= end_index; i++){
         if(i != index ) {
+           
             vision += parseInt(number_str[i])
-        }
-        
+        } 
     }
-    console.log(start_index)
-    console.log(end_index)
-    console.log(vision)
     return vision
 }
 
-// get_vision(1, 3, 231456)
+
+
+function main (number){
+    number_str = number.toString()
+
+    const contains_digit_one = find_digit_one(number)
+
+    if (contains_digit_one){
+        let array_vision = []
+
+        for(let i = 0; i < number_str.length; i++){
+            current_digit = parseInt(number_str[i])
+            vision = get_vision(i, current_digit, number_str)
+            array_vision.push(vision)
+
+            for(let j = 0; j < array_vision.length; j++) {
+                let min = array_vision[0]
+
+               if (min => array_vision[j] && number_str[i]==1){
+                    min = array_vision[j]
+                    return console.log(true)
+               }
+                
+            }
+
+        } 
+
+    } else {
+        console.log(number,"est négatif")
+    }
+
+}
+
+main(211311)
+main(211)
+main(34315)
+
+
+
+
