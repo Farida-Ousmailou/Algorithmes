@@ -1,4 +1,11 @@
 
+/*
+Ce programme permet de verifier si dans une suite de nombre la vision du choffree la vision minimale.
+Pour chaque chiffre sa vision est définie comme la somme des nombres situés de part et d'autre de lui-même, 
+avec une limite établie par sa propre valeur. 
+Plus concrètement, pour un chiffre x sa vision c'est la somme des x chiffres de part et d'autre de du chiffre x.
+*/
+
 
 function find_digit_one (number) {
     if (number > 0){
